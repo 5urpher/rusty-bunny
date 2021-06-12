@@ -1,1 +1,1 @@
-web: ROCKET_PORT=\ ROCKET_ENV=prod ./target/release/rusty-bunny
+web: ROCKET_PORT=\ ROCKET_ENV=release ./target/release/rusty-bunny
