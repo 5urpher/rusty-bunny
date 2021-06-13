@@ -3,7 +3,7 @@
 use lazy_static::lazy_static;
 use regex::Regex;
 
-const YANDEX_BASE_URL: &str = "https://yandex.ru/maps/";
+pub(crate) const YANDEX_BASE_URL: &str = "https://yandex.ru/maps/";
 const DEFAULT_ZOOM_LEVEL: &str = "15";
 const DEFAULT_BASEMAP: &str = "skl";
 
@@ -76,48 +76,4 @@ fn construct_yandexmaps_coords_search_url(query: &str) -> String {
     );
 
     yandexmaps_coords_search_url
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_construct_yandexmaps_url() {
-        let fake_query = "ymaps";
-        assert_eq!(construct_yandexmaps_url(fake_query), YANDEX_BASE_URL);
-    }
-
-    #[test]
-    fn test_construct_yandexmaps_search_url() {
-        let fake_query = "ymaps london";
-        assert_eq!(
-            construct_yandexmaps_url(fake_query),
-            "https://yandex.ru/maps/?text=london"
-        );
-    }
-
-    #[test]
-    fn test_construct_yandexmaps_coords_search_url_all() {
-        let fake_query_default = "ymaps 37.724664,55.750575 z18";
-        let fake_query_map = "ymaps 37.724664,55.750575 z18 map";
-        let fake_query_sat = "ymaps 37.724664,55.750575 z4 sat";
-        let fake_query_skl = "ymaps 37.724664,55.750575 z20 hyb";
-        assert_eq!(
-            construct_yandexmaps_url(fake_query_default),
-            "https://yandex.ru/maps/?ll=37.724664,55.750575&z=18&l=skl"
-        );
-        assert_eq!(
-            construct_yandexmaps_url(fake_query_map),
-            "https://yandex.ru/maps/?ll=37.724664,55.750575&z=18&l=map"
-        );
-        assert_eq!(
-            construct_yandexmaps_url(fake_query_sat),
-            "https://yandex.ru/maps/?ll=37.724664,55.750575&z=4&l=sat"
-        );
-        assert_eq!(
-            construct_yandexmaps_url(fake_query_skl),
-            "https://yandex.ru/maps/?ll=37.724664,55.750575&z=15&l=sat,skl"
-        )
-    }
 }

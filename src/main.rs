@@ -1,15 +1,13 @@
-use rocket::fs::NamedFile;
-use rocket::response::Redirect;
-
 #[macro_use]
 extern crate rocket;
 
+#[cfg(test)]
+mod tests;
+
 mod utils;
 
-#[get("/favicon.ico")]
-async fn favicon() -> Option<NamedFile> {
-    NamedFile::open("static/favicon.ico").await.ok()
-}
+use rocket::fs::NamedFile;
+use rocket::response::Redirect;
 
 #[get("/")]
 fn index() -> &'static str {
@@ -28,8 +26,8 @@ fn search(cmd: String) -> Redirect {
     let command = utils::get_command_from_query_string(&cmd);
 
     let redirect_url = match command {
-        // "gh" => utils::github::construct_github_url(&cmd),
-        // "tw" => utils::twitter::construct_twitter_url(&cmd),
+        "gh" => utils::github::construct_github_url(&cmd),
+        "tw" => utils::twitter::construct_twitter_url(&cmd),
         "ok" => utils::odnoklassniki::construct_odnoklassniki_url(&cmd),
         "vk" => utils::vkontakte::construct_vkontakte_url(&cmd),
         "myro" => utils::myrotvorets::construct_google_myrotvorets_search_url(&cmd),
@@ -41,15 +39,10 @@ fn search(cmd: String) -> Redirect {
     Redirect::to(redirect_url)
 }
 
-// #[rocket::main]
-// async fn main() -> Result<(), rocket::Error> {
-//     rocket::build()
-//         .mount("/", routes![index, search, favicon])
-//         .ignite()
-//         .await?
-//         .launch()
-//         .await
-// }
+#[get("/favicon.ico")]
+async fn favicon() -> Option<NamedFile> {
+    NamedFile::open("static/favicon.ico").await.ok()
+}
 
 #[launch]
 fn rocket() -> _ {
