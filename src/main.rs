@@ -13,7 +13,13 @@ async fn favicon() -> Option<NamedFile> {
 
 #[get("/")]
 fn index() -> &'static str {
-    "Rusty Bunny!"
+    "
+    RUSTY BUNNY
+    
+    USAGE
+
+        TODO
+    "
 }
 
 #[get("/search?<cmd>")]
@@ -35,12 +41,17 @@ fn search(cmd: String) -> Redirect {
     Redirect::to(redirect_url)
 }
 
-#[rocket::main]
-async fn main() -> Result<(), rocket::Error> {
-    rocket::build()
-        .mount("/", routes![index, search, favicon])
-        .ignite()
-        .await?
-        .launch()
-        .await
+// #[rocket::main]
+// async fn main() -> Result<(), rocket::Error> {
+//     rocket::build()
+//         .mount("/", routes![index, search, favicon])
+//         .ignite()
+//         .await?
+//         .launch()
+//         .await
+// }
+
+#[launch]
+fn rocket() -> _ {
+    rocket::build().mount("/", routes![index, search, favicon])
 }
