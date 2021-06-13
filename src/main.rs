@@ -28,8 +28,8 @@ fn search(cmd: String) -> Redirect {
     let command = utils::get_command_from_query_string(&cmd);
 
     let redirect_url = match command {
-        "gh" => utils::github::construct_github_url(&cmd),
-        "tw" => utils::twitter::construct_twitter_url(&cmd),
+        // "gh" => utils::github::construct_github_url(&cmd),
+        // "tw" => utils::twitter::construct_twitter_url(&cmd),
         "ok" => utils::odnoklassniki::construct_odnoklassniki_url(&cmd),
         "vk" => utils::vkontakte::construct_vkontakte_url(&cmd),
         "myro" => utils::myrotvorets::construct_google_myrotvorets_search_url(&cmd),

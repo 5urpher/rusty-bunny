@@ -1,1 +1,1 @@
-web: ROCKET_PORT=$PORT ROCKET_PROFILE=release ./target/release/rusty-bunny
+web: ROCKET_PORT=$PORT ./target/release/rusty-bunny

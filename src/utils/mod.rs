@@ -1,11 +1,11 @@
-pub mod github;
 pub mod google;
 pub mod googlemaps;
 pub mod myrotvorets;
 pub mod odnoklassniki;
-pub mod twitter;
 pub mod vkontakte;
 pub mod yandexmaps;
+// pub mod twitter;
+// pub mod github;
 
 pub fn get_command_from_query_string(query_string: &str) -> &str {
     if query_string.contains(' ') {
