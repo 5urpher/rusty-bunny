@@ -33,6 +33,7 @@ fn search(cmd: String) -> Redirect {
         "myro" => utils::myrotvorets::construct_google_myrotvorets_search_url(&cmd),
         "gmaps" => utils::googlemaps::construct_googlemaps_url(&cmd),
         "ymaps" => utils::yandexmaps::construct_yandexmaps_url(&cmd),
+        "vkid" => utils::vkamico::construct_vkamico_url(&cmd),
         _ => utils::google::construct_google_search_url(&cmd),
     };
 

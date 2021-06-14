@@ -4,6 +4,7 @@ pub mod googlemaps;
 pub mod myrotvorets;
 pub mod odnoklassniki;
 pub mod twitter;
+pub mod vkamico;
 pub mod vkontakte;
 pub mod yandexmaps;
 

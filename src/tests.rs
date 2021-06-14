@@ -298,3 +298,22 @@ fn test_construct_yandexmaps_coords_search_url_all() {
         "https://yandex.ru/maps/?ll=37.724664,55.750575&z=15&l=sat,skl"
     )
 }
+
+// Vkamico
+#[test]
+fn test_construct_vkamico_url_without_vkontakte_base_url() {
+    let fake_query = "vkid valera_666";
+    assert_eq!(
+        utils::vkamico::construct_vkamico_url(fake_query),
+        "https://vkamico.ru/valera_666"
+    )
+}
+
+#[test]
+fn test_construct_vkamico_url_with_vkontakte_base_url() {
+    let fake_query = "vkid https://vk.com/valera_666";
+    assert_eq!(
+        utils::vkamico::construct_vkamico_url(fake_query),
+        "https://vkamico.ru/valera_666"
+    )
+}
