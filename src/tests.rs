@@ -300,20 +300,39 @@ fn test_construct_yandexmaps_coords_search_url_all() {
 }
 
 // Vkamico
+// #[test]
+// fn test_construct_vkamico_url_without_vkontakte_base_url() {
+//     let fake_query = "vkid valera_666";
+//     assert_eq!(
+//         utils::vkamico::construct_vkamico_url(fake_query),
+//         "https://vkamico.ru/valera_666"
+//     )
+// }
+
+// #[test]
+// fn test_construct_vkamico_url_with_vkontakte_base_url() {
+//     let fake_query = "vkid https://vk.com/valera_666";
+//     assert_eq!(
+//         utils::vkamico::construct_vkamico_url(fake_query),
+//         "https://vkamico.ru/valera_666"
+//     )
+// }
+
+// Showid
 #[test]
-fn test_construct_vkamico_url_without_vkontakte_base_url() {
-    let fake_query = "vkid valera_666";
+fn test_construct_showid_url_with_vkontakte_base_url() {
+    let fake_query = "vkid https://vk.com/valera_666";
     assert_eq!(
-        utils::vkamico::construct_vkamico_url(fake_query),
-        "https://vkamico.ru/valera_666"
+        utils::vk_showid::construct_showid_url(fake_query),
+        "http://showid.ru/names/valera_666"
     )
 }
 
 #[test]
-fn test_construct_vkamico_url_with_vkontakte_base_url() {
-    let fake_query = "vkid https://vk.com/valera_666";
+fn test_construct_showid_url_without_vkontakte_base_url() {
+    let fake_query = "vkid valera_666";
     assert_eq!(
-        utils::vkamico::construct_vkamico_url(fake_query),
-        "https://vkamico.ru/valera_666"
+        utils::vk_showid::construct_showid_url(fake_query),
+        "http://showid.ru/names/valera_666"
     )
 }

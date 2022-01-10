@@ -4,9 +4,13 @@ pub mod googlemaps;
 pub mod myrotvorets;
 pub mod odnoklassniki;
 pub mod twitter;
-pub mod vkamico;
+pub mod vk_showid;
+// pub mod vkamico;
 pub mod vkontakte;
 pub mod yandexmaps;
+
+const VK_BASE_URL: &str = "https://vk.com/";
+const VK_MOBILE_BASE_URL: &str = "https://m.vk.com/";
 
 pub fn get_command_from_query_string(query_string: &str) -> &str {
     if query_string.contains(' ') {
